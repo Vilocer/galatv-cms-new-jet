@@ -1,0 +1,30 @@
+{% load cms_tags %}
+
+<!-- {{ section.title }} Section -->
+<div class="section {% if section.page %}section--{% page_attribute 'slug' section.page.id %}{% endif %}" id="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% else %}section{% endif %}">
+    <div class="container">
+        <div class="section__inner wow-effect">
+            {% if section.title or section.sub_title %}
+            <div class="section__header">
+                {% if section.title %}
+                <h1 class="section__title">{{ section.title }}</h1>
+                {% endif %}
+                {% if section.sub_title %}
+                <h3 class="section__subtitle">{{ section.sub_title }}</h3>
+                {% endif %}
+            </div>
+            {% endif %}
+            <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% else %}section__body{% endif %}">
+                <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}">
+                {% for plugin in section.child_plugin_instances %}
+                    {% render_plugin plugin %}
+                {% endfor %}
+                </div>
+            </div>
+            {% if section.page_link_text and section.page %}
+            <a href="{{ section.page.get_absolute_url }}" class="more__link more__link--{% page_attribute 'slug' section.page.id %}">{{ section.page_link_text }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- {{ section.title }}/ Section -->

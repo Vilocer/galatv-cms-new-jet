@@ -1,0 +1,22 @@
+{% load cms_tags %}
+<!-- Info More Widget -->
+
+</div> <!--  Close a __inner class -->
+
+<hr>
+<a href class="info__link modal__link" id="info__link" data-modal="info__modal--{{ instance.id }}">Подробнее о компании</a>
+
+<!-- Info Modal -->
+<div class="modal" id="info__modal--{{ instance.id }}">
+    <div class="modal__content" id="#modal__content">
+        <span class="modal__close" id="modal__close">&times;</span>
+        {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+        {% endfor %}
+    </div>
+</div>
+<!-- Info Modal/ -->
+
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}"> <!-- Open a __inner class -->
+
+<!-- /Info More Widget -->

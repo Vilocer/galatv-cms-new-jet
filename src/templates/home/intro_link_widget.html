@@ -1,0 +1,1 @@
+<a class="intro__btn {% if instance.target_modal_id %}modal__link{% endif %}" href="{{ instance.link_url }}" {% if instance.target_modal_id %}data-modal="{{ instance.target_modal_id }}"{% else %}target="_blank"{% endif %}>{{ instance.title }}{% if instance.icon %} {{ instance.icon.as_html }}{% endif %}</a>

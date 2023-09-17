@@ -1,0 +1,25 @@
+{% extends 'mails/base_mails.html' %}
+{% block content %}
+<h4>Новая заявка на вакансию:</h4>
+
+<p>Выбранная вакансия: {{ vacancy_request.vacancy }}</p>
+
+<p>Имя заказчика: {{ vacancy_request.customer_name }}</p>
+
+<p>Фамилия заказчика: {{ vacancy_request.customer_last_name }}</p>
+
+<p>Номер телефона заказчика: {{ vacancy_request.customer_phone }}</p>
+
+<p>Email заказчика: {{ vacancy_request.customer_email }}</p>
+
+<hr>
+<table>
+    <tr>
+        <td align="center">
+            <p>
+                <a href="{{ home_page_url }}" class="button" target="_blank">Открыть {{ site.name }}</a>
+            </p>
+        </td>
+    </tr>
+</table>
+{% endblock %}

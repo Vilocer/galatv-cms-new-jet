@@ -1,0 +1,6 @@
+{% load cms_tags %}
+{% for child in children %}
+{% if child.level <= 4 %}
+<a href="{{ child.get_absolute_url }}" class="footer__link {% if child.selected %}active{% endif %}" data-scroll="#{% page_attribute 'slug' child.id %}">{{ child.title }}</a>
+{% endif %}
+{% endfor %}

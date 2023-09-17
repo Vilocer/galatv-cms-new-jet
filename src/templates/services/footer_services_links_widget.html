@@ -1,0 +1,12 @@
+<div class="footer__item__col">
+    <div class="links">
+        <p class="links__title" data-scroll="#services">
+            Услуги
+        </p>
+        {% for service in services %}
+        <div class="links__item">
+            <a href="{{ home_page_url }}#services"  class="footer__link" data-scroll="#services">{{ service.title|truncatewords:5 }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>

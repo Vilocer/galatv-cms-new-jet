@@ -1,0 +1,27 @@
+<div class="all__gallery">
+    <div class="section" id="gallery">
+        <div class="container">
+            <div class="section__header">
+                <div class="section__title">
+                    Галерея
+                </div>
+                <div class="section__subtitle">
+                    Фотографии наших работ
+                </div>
+            </div>
+            <div class="seciton__inner">
+                <div class="gallery">
+                    {% if gallery_images %}
+                    {% for gallery_image in gallery_images %}
+                    {% include 'gallery/gallery_image_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">
+                        Тут пусто.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

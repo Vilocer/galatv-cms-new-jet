@@ -1,0 +1,13 @@
+{% load cms_tags %}
+{% page_attribute "slug" section.page.id as current_section_slug %}
+</div> <!-- Close __iner div -->
+{% if news %}
+{% for news_item in news %}
+{% include 'news/news_widget.html' %}
+{% endfor %}
+{% else %}
+<div class="section__subtitle">
+    Тут пусто.
+</div>
+{% endif %}
+<div class="{{ current_section_slug }}__iner"> <!-- Open __iner div -->

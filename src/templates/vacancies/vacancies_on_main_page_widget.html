@@ -1,0 +1,14 @@
+{% load cms_tags %}
+    </div>
+</div>
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% endif %}">
+    {% if vacancies %}
+    {% for vacancy in vacancies %}
+    {% include 'vacancies/vacancy_widget.html' %}
+    {% endfor %}
+    {% else %}
+    <div class="section__subtitle">Тут пусто.</div>
+    {% endif %}
+</div>
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}">
+    <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% endif %}">

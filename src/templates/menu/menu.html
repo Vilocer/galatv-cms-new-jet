@@ -1,0 +1,14 @@
+{% load cms_tags %}
+{% if current_page.is_home %}
+    {% for child in children %}
+        <a href="{{ child.get_absolute_url }}" class="nav__link {% if child.selected %}active{% endif %}" data-scroll="#{% page_attribute 'slug' child.id %}">{{ child.title }}</a>
+    {% endfor %}
+{% else %}
+    {% for child in children %}
+        {% page_attribute "slug" child.id as page_slug %}
+        {% page_attribute "slug" current_page.id as current_page_slug %}
+        {% if child.attr.is_home or page_slug == current_page_slug %}
+            <a href="{{ child.get_absolute_url }}" class="nav__link {% if child.selected and page_slug == current_page_slug %}active active--always{% endif %}" data-scroll="#{% page_attribute 'slug' child.id %}">{{ child.title }}</a>
+            {% endif %}
+        {% endfor %}
+{% endif %}

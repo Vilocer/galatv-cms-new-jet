@@ -1,0 +1,16 @@
+{% load cms_tags static %}
+
+<!-- Forms Style -->
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+<div class="form__content wow-effect default__form__content">
+    {% for plugin in instance.child_plugin_instances %}
+    {% render_plugin plugin %}
+    {% endfor %}
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Forms Js -->
+<script src="{% static 'js/forms_script.js' %}"></script>

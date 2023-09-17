@@ -1,0 +1,336 @@
+/* Style for all Forms */
+html {
+    height: 100%;
+}
+
+/* хром, сафари */
+html::-webkit-scrollbar { width: 0; }
+
+/* ie 10+ */
+html { -ms-overflow-style: none; }
+
+/* фф (свойство больше не работает, других способов тоже нет)*/
+html { overflow: -moz-scrollbars-none; }
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+    background: #243b55;
+}
+
+hr {
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    
+    background-color: #a5a5a5;
+    margin: 15px 0;
+  }
+
+/* Wow effect */
+.wow-effect {
+    opacity: 0;
+    transition: opacity .2s linear;
+    transition-delay: .3s;
+}
+
+.wow-effect__active {
+    opacity: 1;
+}
+
+
+/* Form */
+.form__content {
+    box-sizing: border-box;
+
+    margin: 3% auto 0;
+    width: 30%;
+    padding: 40px;
+
+    background: rgba(0,0,0,.5);
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.form__title {
+    font-family: 'Comfortaa', cursive;
+
+    margin: 0 0 35px;
+    padding: 0;
+
+    color: #fff;
+    text-align: center;
+}
+
+.form__item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form__item input, .form__item textarea, .form__item select {
+    width: 100%;
+    padding: 10px 0;
+
+    font-size: 16px;
+    color: #fff;
+    
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+/* Убираем стилизацию при автозаполенинии форм */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
+}
+
+.form__help__text {
+    text-align: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+
+.form__item label {
+    position: absolute;
+    top:0;
+    left: 0;
+
+    padding: 10px 0;
+
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.form__item input:focus ~ .form__help__text, 
+.form__item textarea:focus ~ .form__help__text {
+    opacity: 1;
+}
+
+.form__item input:focus ~ label, 
+.form__item textarea:focus ~ label,
+.form__item label.active {
+    top: -20px;
+    left: 0;
+
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.form__submit {
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    display: block;
+    width: 70%;
+    margin: 40px auto;
+
+    padding: 15px 20px;
+
+    background: transparent;
+    border: 1px solid #fff;
+
+    transition: .2s linear;
+}
+
+.form__submit:hover {
+    color: #243B55;
+    background: #fff;
+    border-color: transparent;
+}
+
+.form__link {
+    display: block;
+
+    text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+    color: #243b55;
+
+    padding-bottom: 5px;
+    border-bottom: 1px solid #243b55;
+    transition: .2s linear;
+}
+
+.form__link:hover {
+    color: #2196F3;
+    border-color: #2196F3;
+}
+
+/* Form Switch */
+.form__switch__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__switch {
+    position: relative !important;
+    display: inline-block;
+
+    width: 56px;
+    height: 10px;
+    min-width: 56px;
+
+    pointer-events: all !important;
+}
+
+
+.switch__label {
+    position: relative !important;
+}
+
+.switch__label.active {
+    color: #fff !important;
+    font-size: 16px !important;
+}
+
+.form__switch input {
+    display: none;
+}
+
+.switch {
+    position: absolute;
+    cursor: pointer;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: #ccc;
+    transition: .2s linear;
+}
+
+.switch:before {
+    content: "";
+    position: absolute;
+
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+
+    background-color: #fff;
+    transition: .2s linear;
+}
+
+.form__switch input:checked + .switch, .form__switch input:focus + .switch  {
+    background-color: #2196F3;
+}
+
+.form__switch input:checked + .switch:before {
+    transform: translateX(26px);
+}
+
+.switch {
+    border-radius: 34px;
+}
+.switch:before {
+    border-radius: 50%;
+}
+
+/* Select */
+.form__item option {
+    color: #000;
+    margin: 10px;
+    word-break: break-all;
+}
+
+/* Form Success */
+.form__success {
+    text-align: center;
+}
+
+.success__title {
+    font-family: 'Comfortaa', cursive;
+    color: #fff;
+    font-size: 22px;
+}
+
+.success__text {
+    font-size: 16px;
+    color: #C9C9f9;
+}
+
+.success__link {
+    color: #243b55;
+    text-decoration: none;
+
+    padding-bottom: 5px;
+    border-bottom: 1px solid #243b55;
+    transition: .2s linear;
+}
+
+.success__link:hover {
+    color: #2196F3;
+    border-color: #2196F3;
+}
+
+/* Errors */
+.errorlist {
+    color: #FFBBBB;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #FFBBBB;
+}
+
+@media (max-width: 1200px) {
+    html {
+        height: 120%;
+        overflow-y: initial;
+    }
+    
+    .form__content {
+        width: 50%;
+    }
+}
+
+@media (max-width: 770px) {
+    html {
+        height: 150%;
+    }
+    
+    .form__content {
+        width: 70%;
+    }
+}
+
+@media (max-width: 575px) {
+    html {
+        height: 200%;
+    }
+    
+    .form__content {
+        width: 85%;
+    }
+
+    .form__submit {
+        padding: 13px 10px;
+        font-size: 16px;
+    }
+}

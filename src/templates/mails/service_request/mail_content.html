@@ -1,0 +1,31 @@
+{% extends 'mails/base_mails.html' %}
+{% block content %}
+<h4>Новая заявка на оказание услуги:</h4>
+
+<p>Выбранная услуна: {{ service_request.service }}</p>
+
+<p>Имя заказчика: {{ service_request.customer_name }}</p>
+
+<p>Фамилия заказчика: {{ service_request.customer_last_name }}</p>
+
+<p>Номер телефона заказчика: {{ service_request.customer_phone }}</p>
+
+<p>Email заказчика: {{ service_request.customer_email }}</p>
+
+<p>Адресс заказчика: {{ service_request.customer_address }}</p>
+
+{% if connect_request.customer_comment %}
+<p>Комментарий к заказу: {{ connect_request.customer_comment }}</p>
+{% endif %}
+
+<hr>
+<table>
+    <tr>
+        <td align="center">
+            <p>
+                <a href="{{ home_page_url }}" class="button" target="_blank">Открыть {{ site.name }}</a>
+            </p>
+        </td>
+    </tr>
+</table>
+{% endblock %}

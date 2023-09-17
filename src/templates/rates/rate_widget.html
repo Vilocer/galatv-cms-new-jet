@@ -1,0 +1,100 @@
+<!-- Rate Widget -->
+
+<div class="rates__item" data-name="{{ rate.title.lower }}">
+    <div class="rates__title">{{ rate.title }}</div>
+    <div class="rates__place">{{ rate.place.title }}</div>
+    <div class="rates__internet" {% if rate.internet_speed == 0 %} style="visibility: hidden; height: 60px;" {% endif %}>
+        <div class="rates__speed">{{ rate.internet_speed }}</div>
+        <div class="rates__unit">
+            <div class="rates__mgt">Мбт.</div>
+            <div class="rates__second">сек.</div>
+        </div>
+    </div>
+    <form action="{% if rate.form_page %}{{ rate.form_page.get_absolute_url }}{% endif %}" method="GET">
+        {% if rate.have_tv %}
+        <div class="rates__tv">
+            <label class="rates__switch">     
+                <input data-up-price-to="{{ rate.title.lower }}" data-up-price-by="{{ rate.price_tv }}" name="tv" type="checkbox" autocomplete="off">
+                <span class="switch"></span>
+            </label>
+            <div class="rates__tv__text">
+                Кабельное ТВ (+{{ rate.price_tv }} руб)
+            </div>
+        </div>
+        {% endif %}
+        <div class="rates__price">
+            <div class="price">{{ rate.price }}</div>
+            <div class="rates__unit">
+                <div class="rates__rub">
+                    руб.
+                </div>
+                <div class="rates__month">
+                    мес.
+                </div>
+            </div>
+        </div>
+        <input name="rate_id" type="hidden" value="{{ rate.pk }}">
+        {% if rate.form_page %}
+        <button class="rates__connect">подключить</button>
+        {% endif %}
+    </form>
+    <hr>
+    <a class="rates__link modal__link" href="#" data-modal="rate__modal--{{ rate.pk }}">Подробнее о тарифе</a>
+</div>
+<!-- Rate Modal -->
+<div class="modal" id="rate__modal--{{ rate.pk }}">
+    <div class="modal__content service__modal__content" id="#modal__content">
+        <span class="modal__close" id="modal__close">&times;</span>
+        <div class="rate__modal">
+            <div class="rates__modal__item" data-name="{{ rate.title.lower }}_modal">
+                <div class="rates__title">{{ rate.title }}</div>
+                <div class="rates__place">{{ rate.place.title }}</div>
+                {% if rate.place.description %}
+                <div class="rates__place__description">{{ rate.place.description }}</div>
+                {% endif %}
+                <div class="rates__internet" {% if rate.internet_speed == 0 %} style="visibility: hidden; height: 60px;" {% endif %}>
+                    <div class="rates__speed">{{ rate.internet_speed }}</div>
+                    <div class="rates__unit">
+                        <div class="rates__mgt">Мбт.</div>
+                        <div class="rates__second">сек.</div>
+                    </div>
+                </div>
+                <form action="{% if rate.form_page %}{{ rate.form_page.get_absolute_url }}{% endif %}" method="GET">
+                    {% if rate.have_tv %}
+                    <div class="rates__tv">
+                        <label class="rates__switch">     
+                            <input data-up-price-to="{{ rate.title.lower }}_modal" data-up-price-by="{{ rate.price_tv }}" name="tv" type="checkbox" autocomplete="off">
+                            <span class="switch"></span>
+                        </label>
+                        <div class="rates__tv__text">
+                            Кабельное ТВ (+{{ rate.price_tv }} руб)
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="rates__price">
+                        <div class="price">{{ rate.price }}</div>
+                        <div class="rates__unit">
+                            <div class="rates__rub">
+                                руб.
+                            </div>
+                            <div class="rates__month">
+                                мес.
+                            </div>
+                        </div>
+                    </div>
+                    {% if rate.description %}
+                    <div class="rates__description">{{ rate.description }}</div>
+                    {% endif %}
+                    <hr>
+                    <input name="rate_id" type="hidden" value="{{ rate.pk }}">
+                    {% if rate.form_page %}
+                    <button class="rates__connect">подключить</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Rate Modal/ -->
+
+<!-- /Rate Widget -->

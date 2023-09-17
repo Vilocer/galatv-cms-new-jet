@@ -1,0 +1,40 @@
+{% for place, rates in rates.items %}
+<div class="all__rates">
+
+    <!-- Rates Section -->
+    <div class="section section--all__rates" id="rates">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <h1 class="section__title">{{ place.title }}</h1>
+                    <h4 class="section__subtitle">
+                        Интернет и Кабельное ТВ - {{ place.title }}
+                    </h4>
+                </div>
+                <!-- Rates -->
+                <div class="rates wow-effect">
+                    <!-- Rates Inner -->
+                    <div class="rates__inner">
+                        {% if rates.0 %}
+                        {% for rate in rates.0 %}
+                        {% include 'rates/rate_widget.html' %}
+                        {% endfor %}
+                        {% else %}
+                        <div class="rates__item">
+                            <div class="rates__title">
+                                Тут пусто.
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- /Rates Inner -->
+                </div>
+                <!-- /Rates -->
+            </div>
+        </div>
+    </div>
+    <!-- /Rates Section -->
+    
+</div>
+{% endfor %}
+{% include "rates/rate_style_css.html" %}

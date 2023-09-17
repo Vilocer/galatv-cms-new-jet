@@ -1,0 +1,32 @@
+{% load cms_tags %}
+<div class="all__news__container">
+    <section class="section section--all__rates">
+        <div class="container">
+            <div class="section__header">
+                <div class="section__title wow-effect">
+                    Новости
+                </div>
+                <div class="section__subtitle wow-effect">Все наши последния события</div>
+            </div>
+            <div class="section__inner">
+                <div class="news__options wow-effect">
+                    <form class="news__search"  action="{{ section.page.get_absolute_url }}" method="get">
+                        <input class="news__search__input" id="news__search__q" type="text" name="q" placeholder="Напишите что-нибудь" {% if q %}value="{{ q }}"{% endif %} autocomplete="off">
+                        <button class="news__search__link">Поиск</button>
+                    </form>
+                </div>
+                <div class="all__news wow-effect" id="news">
+                    {% if news %}
+                    {% for news_item in news %}
+                    {% include 'news/news_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">
+                        Тут пусто.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

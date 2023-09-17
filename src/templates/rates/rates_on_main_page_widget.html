@@ -1,0 +1,12 @@
+{% if rates.count != 0 %}
+{% for rate in rates %}
+{% include "rates/rate_widget.html" %}
+{% include "rates/rate_style_css.html" %}
+{% endfor %}
+{% else %}
+<div class="rates__item">
+    <div class="rates__title">
+        Тут пусто.
+    </div>
+</div>
+{% endif %}

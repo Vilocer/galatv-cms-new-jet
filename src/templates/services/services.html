@@ -1,0 +1,13 @@
+{% load cms_tags %}
+            </div> <!-- Close services__inner -->
+        </div> <!-- Close services -->
+    </div> <!-- Close section__inner -->
+</div> <!-- Close container -->
+
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% else %}section__body{% endif %}"> <!-- Open services -->
+    {% for plugin in instance.child_plugin_instances %}
+    {% render_plugin plugin %}
+    {% endfor %}
+    <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}"> <!-- Open services__inner -->
+        <div class="section__inner"> <!-- Open section__inner -->
+            <div class="container"> <!-- Open container -->

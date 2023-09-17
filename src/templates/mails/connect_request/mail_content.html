@@ -1,0 +1,40 @@
+{% extends 'mails/base_mails.html' %}
+{% block content %}
+<h4>Новая заявка на подключение:</h4>
+
+<p>Выбранный тариф: {{ connect_request.rate }}</p>
+
+{% if connect_request.rate.have_tv %}
+<p>Подключать ТВ:
+{% if connect_request.connect_tv %}
+Да
+{% else %}
+Нет
+{% endif %}
+</p>
+{% endif %}
+
+<p>Имя заказчика: {{ connect_request.customer_name }}</p>
+
+<p>Фамилия заказчика: {{ connect_request.customer_last_name }}</p>
+
+<p>Номер телефона заказчика: {{ connect_request.customer_phone }}</p>
+
+<p>Email заказчика: {{ connect_request.customer_email }}</p>
+
+<p>Адресс заказчика: {{ connect_request.customer_address }}</p>
+
+{% if connect_request.customer_comment %}
+<p>Комментарий к заказу: {{ connect_request.customer_comment }}</p>
+{% endif %}
+<hr>
+<table>
+    <tr>
+        <td align="center">
+            <p>
+                <a href="{{ home_page_url }}" class="button" target="_blank">Открыть {{ site.name }}</a>
+            </p>
+        </td>
+    </tr>
+</table>
+{% endblock %}

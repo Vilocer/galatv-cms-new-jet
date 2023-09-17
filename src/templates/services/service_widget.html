@@ -1,0 +1,38 @@
+{% load cms_tags %}
+<!-- Service Widget -->
+<div class="services__item">
+    <div class="services__image">
+        <img src="{{ service.image.url }}" alt="Gala TV | {{ service.title }}">
+        <p class="services__text">
+            {{ service.title|truncatewords:7|safe  }}
+        </p>
+        <a href="#" class="services__btn  modal__link" data-modal="service__modal--{{ service.pk }}">
+            Подробнее
+        </a>
+    </div>
+    <!-- Service Modal -->
+    <div class="modal" id="service__modal--{{ service.pk }}">
+        <div class="modal__content service__modal__content" id="#modal__content">
+            <span class="modal__close" id="modal__close">&times;</span>
+            <div class="service__modal">
+                <div class="service__item">
+                    <h3 class="modal__title service__title">{{ service.title|safe }}</h3>
+                </div>
+                <div class="service__item">
+                    <img src="{{ service.image.url }}" alt="Gala TV | {{ service.title }}" class="service__image">
+                </div>
+                <div class="service__item">
+                    <p class="service__text">{{ service.description }}</p>
+                    {% if service.form_page %}
+                    <a href="{{ service.form_page.get_absolute_url }}?id={{ service.pk }}" class="service__link">Оставить Заявку</a>
+                    {% endif %}
+                    {% if service.detail_page %}
+                    <a href="{{ service.detail_page.get_absolute_url }}" class="rates__link">Подробнее о услуге</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service Modal/ -->
+</div>
+<!-- /Service Widget -->

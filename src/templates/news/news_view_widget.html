@@ -1,0 +1,70 @@
+<div class="articles__container" id="news">
+    <section class="section">
+        <div class="container">
+            <div class="article__image wow-effect">
+                <div class="image" style="background-image: url({{ news.image.url }});"></div>
+                <div class="article__image__text">{{ news.title|truncatewords:6 }}</div>
+            </div>
+            <article class="article wow-effect">
+                <div class="article__title">{{ news.title }}</div>
+                <hr>
+                <div class="article__text">
+                    {{ news.content|safe  }}
+                </div>
+                <div class="article__date">
+                    {{ news.date_and_time }}
+                </div>
+                <hr>
+                <div class="article__stats">
+                    <div class="article__stats__item views">{{ news.add_view }} <i class="fas fa-eye"></i></div>
+                    <div class="article__stats__item comments">{{ news.get_comments_count }} <i class="fas fa-comments"></i></div>
+                </div>
+                {% if news_comments.count or news_comments.count == 0 %}
+                <div class="article__comments">
+                    <div class="comments__count">Комментариев: {{ news_comments.count }}</div>
+                    <hr>
+                    {% if news_comments %}
+                    {% for comment in news_comments %}
+                    <div class="article__comment">
+                        <div class="comment__image">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="comment__inner">  
+                            <div class="comment__author__name">
+                                {{ comment.author_name }}
+                            </div>
+                            <div class="comment__content">
+                                {{ comment.content|safe }}
+                            </div>
+                            <div class="comment__date">
+                                {{ comment.date_and_time }}
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    {% else %}
+                    <div class="comments__null">Тут пусто. Напишите первый комментарий!</div>
+                    <hr>
+                    {% endif %}
+                    <div class="comment__form__title">Написать Комментарий</div>
+                    <form action="{{ comment_form_action }}" method="POST" class="comment__form">
+                        <input type="hidden" name='csrfmiddlewaretoken' value="{{ csrf_token }}">
+                        {% for field in comment_form %}
+                        <div class="comment__form__item form__item">
+                            {{ field }}
+                            <label for="id_{{ field.name }}">{{ field.label }}</label>
+                            {{ field.errors }}
+                            <div class="comment__form__help__text form__help__text">{{ field.help_text }}</div>
+                        </div>
+                        {{ comment_form.non_field_errors }}
+                        {% endfor %}
+                        <input type="submit" class="comment__form__submit" value="Написать">
+                    </form>
+                </div>
+                {% endif %}
+            </article>
+        </div>
+    </section>
+</div>

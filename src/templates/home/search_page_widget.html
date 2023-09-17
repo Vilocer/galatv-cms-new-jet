@@ -1,0 +1,161 @@
+<div class="search wow-effect {% if search_results == None %}section--white{% endif %}">
+    {% if search_results %}
+    {% if search_results.rates %}
+    <!-- Rates Section -->
+    <div class="section section--all__rates search__item" id="rates">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <h1 class="section__title">Тарифы</h1>
+                    <h4 class="section__subtitle">
+                        Результаты поиска - {{ search_results.rates.count }}
+                    </h4>
+                </div>
+                <!-- Rates -->
+                <div class="rates">
+                    <!-- Rates Inner -->
+                    <div class="rates__inner">
+                        {% if search_results.rates %}
+                        {% for rate in search_results.rates %}
+                        {% include "rates/rate_style_css.html" %}
+                        {% include 'rates/rate_widget.html' %}
+                        {% endfor %}
+                        {% else %}
+                        <div class="rates__title">
+                            Тут пусто.
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- /Rates Inner -->
+                </div>
+                <!-- /Rates -->
+            </div>
+        </div>
+    </div>
+    <!-- /Rates Section -->
+    {% endif %}
+    {% if search_results.services %}
+    <!-- Services Section -->
+    <div class="section section--all__rates search__item" id="services">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <div class="section__title">
+                        Услуги
+                    </div>
+                    <div class="section__subtitle">
+                        Результаты поиска - {{ search_results.services.count }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="services">
+            {% if search_results.services %}
+            {% for service in search_results.services %}
+            {% include 'services/service_widget.html' %}
+            {% endfor %}
+            {% else %}
+            <div class="section__subtitle">Тут пусто.</div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- /Services Section -->
+    {% endif %}
+    {% if search_results.news %}
+    <!-- News Section -->
+    <div class="section section--all__rates search__item" id="news">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <h1 class="section__title">Новости</h1>
+                    <h3 class="section__subtitle">Результаты поиска - {{ search_results.news.count }}</h3>
+                </div>
+                <div class="news all__news">
+                    {% if search_results.news %}
+                    {% for news_item in search_results.news %}
+                    {% include 'news/news_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">
+                        Тут пусто.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /News Section -->
+    {% endif %}
+    {% if search_results.vacancies %}
+    <!-- Vacancies Section -->
+    <div class="section section--all__rates search__item" id="vacancies">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <div class="section__title">
+                        Вакансии
+                    </div>
+                    <div class="section__subtitle">
+                        Результаты поиска - {{ search_results.vacancies.count }}
+                    </div>
+                </div>
+                <div class="vacancies">
+                    {% if search_results.vacancies %}
+                    {% for vacancy in search_results.vacancies %}
+                    {% include 'vacancies/vacancy_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">Тут пусто.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Vacancies Section -->
+    {% endif %}
+    {% if search_results.gallery %}
+    <!-- Gallery Section -->
+    <div class="section search__item" id="gallery">
+        <div class="container">
+            <div class="section__inner">
+                <div class="section__header">
+                    <div class="section__title">
+                        Галерея
+                    </div>
+                    <div class="section__subtitle">
+                        Фотографии наших работ
+                    </div>
+                </div>
+                <div class="gallery">
+                    {% if search_results.gallery %}
+                    {% for gallery_image in search_results.gallery %}
+                    {% include 'gallery/gallery_image_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">
+                        Тут пусто.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Gallery Section -->
+    {% endif %}
+    {% else %}
+    <div class="section">
+        <div class="container">
+            <div class="section__header">
+                <div class="section__subtitle">
+                    Странно, но ничего не нашлось
+                </div>
+            </div>
+            <div class="section__inner">
+                <div class="section__subtitle search__null__text">
+                    Пусто. <a href="{{ home_page }}" class="search__null__link">Вернутья домой</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

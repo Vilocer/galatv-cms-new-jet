@@ -1,0 +1,16 @@
+{% extends 'base_forms.html' %}
+{% load cms_tags %}
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block main %}
+<div class="form__success">
+    <div class="success__title">
+        <i class="fas fa-check-circle fa-4x"></i>
+        <h1>Успешно</h1>
+    </div>
+    <hr>
+    <div class="success__text">
+        {% include 'forms/success_text_widget.html' %}
+    </div>
+    <a href="{{ home_page_url }}" class="success__link">Вернуться на главаную</a>
+</div>
+{% endblock %}

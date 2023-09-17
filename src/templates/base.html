@@ -1,0 +1,144 @@
+{% load static cms_tags menu_tags sekizai_tags yandex_metrica %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        {% yandex_metrica %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>{% block title %}{% endblock %}</title>
+    
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/png">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5bd0bdd82a.js" crossorigin="anonymous"></script>
+    
+        <!-- Main Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        {% render_block "css" %}
+
+    </head>
+    <body>
+        <!-- Page -->
+        <div class="page" id='page--{% page_attribute "slug" %}'>
+
+            <!-- Header -->
+            <header class="header" id="header">
+                <div class="container">
+                    <div class="header__inner">
+                        <nav class="nav wow-effect wow-effect-1" id="nav">
+                            {% show_menu 0 100 100 100 "menu/menu.html" %}
+                        </nav>
+                        <div class="nav__toggle" id="nav__toggle">
+                            <span class="nav__toggle__item">Menu</span>
+                        </div>
+                        <div class="header__search wow-effect wow-effect-1">
+                            {% static_placeholder "Header_icon" %}
+                        </div>
+                        <div class="nav__menu" id="nav__menu">
+                            {% show_menu 0 100 100 100 "menu/menu_mobile.html" %}
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- /Header -->
+
+            <!-- Django-CMS Toolbar -->
+            {% if has_change_permissions %}
+                {% include "toolbar/toolbar.html" %}
+            {% endif %}
+            <!-- /Django-CMS Toolbar -->
+
+            <!-- Main -->
+            <main class="main" id="main">
+
+                {% block sections %}
+                {% endblock %}
+                
+                {% block content %}
+                {% endblock %}
+    
+            </main>
+            <!-- /Main -->
+
+            <!-- Footer -->
+            <footer class="footer" id="footer">
+                <div class="container">
+                    <div class="footer__inner">
+                        <div class="footer__content">
+                            <div class="footer__title"><h1>{% static_placeholder "footer_title" %}</h1></div>
+                            <div class="footer__subtitle">
+                                {% static_placeholder "footer_subtitle" %}
+                            </div>
+                        </div>
+                        <div class="footer__item">
+                            <div class="footer__item__col">
+                                <div class="links">
+                                    <div class="links__title" data-scroll="#intro">
+                                        {% static_placeholder "footer_menu_title" %}
+                                    </div>
+                                    <div class="links__item">
+                                        {% show_menu 0 100 100 100 "menu/footer.html" %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% static_placeholder "Footer_links_col" %}
+                        </div>
+                    </div>
+                    <div class="social">
+                        {% static_placeholder "Footer_Social_Icons_links" %}
+                    </div>
+                </div>
+                <div class="footer__info">
+                    {% static_placeholder "footer_info" %}
+                </div>
+            </footer>
+            <!-- /Footer -->
+
+        </div>
+        <!-- /Page -->
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+        <!-- Main Js -->
+        <script src="{% static 'js/script.js' %}"></script>
+
+        <!-- Forms Js -->
+        <script src="{% static 'js/forms_script.js' %}"></script>
+
+        <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=8dfb7c0543e1046cff448b"></script>
+        <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+
+        <script>
+            document.querySelectorAll( 'div[data-oembed-url]' ).forEach( element => {
+                // Discard the static media preview from the database (empty the <div data-oembed-url="...">).
+                while ( element.firstChild ) {
+                    element.removeChild( element.firstChild );
+                }
+        
+                // Generate the media preview using Iframely.
+                iframely.load( element, element.dataset.oembedUrl ) ;
+            } );
+        
+            
+            document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+                // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+                // to discover the media.
+                const anchor = document.createElement( 'a' );
+        
+                anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+                anchor.className = 'embedly-card';
+        
+                element.appendChild( anchor );
+            } );
+        </script>
+
+        {% render_block "js" %}
+        
+    </body>
+</html>

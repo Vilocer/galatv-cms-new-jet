@@ -1,0 +1,28 @@
+{% load cms_tags %}
+        </div> <!-- map__inner -->
+    </div> <!-- section__body -->
+</div> <!-- section__inner -->
+</div> <!-- container -->
+
+<div class="map">
+    <a href="#" class="map__link modal__link" id="map__link" data-modal="map__modal">
+        <i class="fas fa-map-marker-alt map__marker"></i>
+        <div class="map__text">Открыть Карту</div>
+    </a>
+</div>
+
+<div class="container">
+    <div class="section__inner">
+        <div class="section__body">
+            <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}">
+
+        <!-- Map Modal -->
+        <div class="modal" id="map__modal">
+            <div class="modal__content" id="#modal__content">
+                <span class="modal__close" id="modal__close">&times;</span>
+                {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Map Modal/ -->

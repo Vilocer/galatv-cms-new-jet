@@ -1,0 +1,69 @@
+<style>
+    /* Rates - Отдельная часть с динамическими значениями для backend */
+    {% if rates %}
+        {% for rate in rates %}
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__speed,
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__title,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__speed,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__title {
+            color: {{ rate.color }};
+        }
+    
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__mgt:after,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__mgt:after {
+            background-color: {{ rate.color }};
+        }
+    
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__connect,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__connect {
+            background: {{ rate.color }};
+            border: 1px solid {{ rate.color }};
+        }
+        {% endfor %}
+    {% endif %}
+    {% if search_results.rates %}
+        {% for rate in search_results.rates %}
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__speed,
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__title,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__speed,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__title {
+            color: {{ rate.color }};
+        }
+    
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__mgt:after,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__mgt:after {
+            background-color: {{ rate.color }};
+        }
+    
+        .rates__item[data-name="{{ rate.title.lower }}"] .rates__connect,
+        .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__connect {
+            background: {{ rate.color }};
+            border: 1px solid {{ rate.color }};
+        }
+        {% endfor %}
+    {% endif %}
+</style>
+<style>
+    /* Rates - Отдельная часть с динамическими значениями для backend */
+    {% for place, rates in rates.items %}
+    {% for rate in rates.0 %}
+    .rates__item[data-name="{{ rate.title.lower }}"] .rates__speed,
+    .rates__item[data-name="{{ rate.title.lower }}"] .rates__title,
+    .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__speed,
+    .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__title {
+        color: {{ rate.color }};
+    }
+
+    .rates__item[data-name="{{ rate.title.lower }}"] .rates__mgt:after,
+    .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__mgt:after {
+        background-color: {{ rate.color }};
+    }
+
+    .rates__item[data-name="{{ rate.title.lower }}"] .rates__connect,
+    .rates__modal__item[data-name="{{ rate.title.lower }}_modal"] .rates__connect {
+        background: {{ rate.color }};
+        border: 1px solid {{ rate.color }};
+    }
+    {% endfor %}
+    {% endfor %}
+</style>

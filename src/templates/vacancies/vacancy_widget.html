@@ -1,0 +1,20 @@
+<div class="vacancy">
+    <div class="vacancy__image">
+        <div><img src="{{ vacancy.image.url }}" alt="{{ vacancy.title }} | Gala TV | Vacany Image"></div>
+    </div>
+    <div class="vacancy__inner">
+        <div class="vacancy__title">
+            <h4>{{ vacancy.title|truncatewords:5 }}</h4>
+        </div>
+        <div class="vacancy__text">
+            {{ vacancy.description|truncatewords:15 }}
+        </div>
+        <hr>
+        <div class="vacancy__pay">
+            Оплата: {{ vacancy.payment }}
+        </div>
+        {% if vacancy.form_page %}
+        <a href="{{ vacancy.form_page.get_absolute_url }}?id={{ vacancy.pk }}" class="vacancy__link">Оставить заявку</a>
+        {% endif %}
+    </div>
+</div>

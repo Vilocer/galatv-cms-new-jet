@@ -1,0 +1,29 @@
+{% load cms_tags %}
+
+<form action="{{ form_action }}" method="POST">
+    <input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}'/>
+    
+    {% for field in request_form %}
+    <div class="form__item"> 
+        {% if field.name != 'rate' and field.name != 'connect_tv' and field.name != 'service' and field.name != 'vacancy' %}
+        {{ field }}
+        <p class="form__help__text">{{  field.help_text }}</p>
+        <label for="id_{{ field.name }}">{{ field.label }}</label>
+        {% elif field.name == 'rate' or field.name == 'service' or field.name == 'vacancy' %}
+        {{ field }}
+        {% elif field.name == 'connect_tv' %}
+        <div class="form__switch__inner">
+            <label class="switch__label" for="id_{{ field.name }}">{{ field.label }}:</label>
+            <label class="form__switch">
+                {{ field }}
+                <span class="switch"></span>
+            </label>
+        </div>
+        {% endif %}
+        {{ field.errors }}
+    </div>
+    {% endfor %}
+    {{ request_form.non_field.errors }}
+    <input class="form__submit" type="submit" value="Отправить"/>
+    <a class="form__link" href="{{ home_page_url }}">На главную</a>
+</form>

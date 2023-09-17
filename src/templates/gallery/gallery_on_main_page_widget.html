@@ -1,0 +1,16 @@
+{% load cms_tags %}
+    </div> <!-- Close gallery__inner -->
+</div><!-- Close gallery -->
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% else %}section__body{% endif %}">
+    {% if gallery_images %}
+    {% for gallery_image in gallery_images %}
+    {% include 'gallery/gallery_image_widget.html' %}
+    {% endfor %}
+    {% else %}
+    <div class="section__subtitle">
+        Тут пусто.
+    </div>
+    {% endif %}
+</div>
+<div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}{% else %}section__body{% endif %}">
+    <div class="{% if section.page %}{% page_attribute 'slug' section.page.id %}__inner{% endif %}">

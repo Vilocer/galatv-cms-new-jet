@@ -1,0 +1,8 @@
+{% load cms_tags %}
+<article class="article wow-effect">
+    <div class="article__title">{{ instance.title }}</div>
+        {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+        {% endfor %}
+    <hr>
+</article>

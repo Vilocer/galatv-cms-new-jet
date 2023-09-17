@@ -1,0 +1,27 @@
+<div class="all__vacancies">
+    <div class="section section--all__rates wow-effect" id="vacancies">
+        <div class="container">
+            <div class="section__header">
+                <div class="section__title">
+                    Все наши вакансии
+                </div>
+                <div class="section__subtitle">
+                    В городе Кирове и пгт. Мурыгино
+                </div>
+            </div>
+            <div class="section__inner">
+                <div class="vacancies">
+                    {% if vacancies %}
+                    {% for vacancy in vacancies %}
+                    {% include 'vacancies/vacancy_widget.html' %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="section__subtitle">
+                        Тут пусто.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

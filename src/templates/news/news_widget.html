@@ -1,0 +1,28 @@
+{% load cms_tags %}
+<article class="news__item">
+    <div class="news__image">
+        <a href="{% if section %}{{ section.page.get_absolute_url }}{% else %}/news{% endif %}?id={{ news_item.pk }}"><img src="{{ news_item.image.url }}" alt="{{ news_item.title }} | Gala TV Image"></a>
+        <div class="news__date">
+            <div class="news__num">
+                {{ news_item.date_and_time.day}}
+            </div>
+            <div class="news__month">
+                {{ news_item.get_month_name }}
+            </div>
+        </div>
+    </div>
+    <div>                  
+        <a href="{% if section %}{{ section.page.get_absolute_url }}{% else %}/news{% endif %}?id={{ news_item.pk }}" class="news__title news__link">
+            {{ news_item.title|truncatewords:6 }}
+        </a>
+    </div>
+    <a href="{% if section %}{{ section.page.get_absolute_url }}{% else %}/news{% endif %}?id={{ news_item.pk }}" class="news__text news__link">
+        {{ news_item.content|truncatewords:12|striptags|safe }}
+    </a>
+    <hr class="news__line">
+    <div class="news__stats__time">{{ news_item.get_time }}</div>
+    <div class="news__stats">
+        <div class="news__stats__item comments">{{ news_item.get_comments_count }} <i class="fas fa-comments"></i></div>
+        <div class="news__stats__item views">{{ news_item.views_count }} <i class="fas fa-eye"></i></div>
+    </div>
+</article>

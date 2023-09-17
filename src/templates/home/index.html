@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block sections %}
+
+<!-- Intro -->
+<div class="intro" id="home">
+    <div class="container">
+        <div class="intro__inner wow-effect wow-effect-1">
+            <div class="intro__title">
+                {% placeholder "intro_title" %}
+            </div>
+            <div class="intro__text">
+                {% placeholder "intro_text" %}
+            </div>
+            <div class="intro__links">
+                {% placeholder "intro_link"  %}
+            </div>
+
+            <!-- Payment Modal -->
+            <div class="modal" id="payment__modal">
+                <div class="modal__content" id="#modal__content">
+                    <span class="modal__close" id="modal__close">&times;</span>
+                    <div class="modal__title">
+                        {% placeholder "payment_modal_title" %}
+                    </div>
+                    <div class="modal__text">
+                        {% placeholder "payment_modal_content" %}
+                    </div>
+                </div>
+            </div>
+            <!-- Payment Modal/ -->
+
+        </div>
+    </div>
+</div>
+<!-- /Intro -->
+
+<!-- Sections -->
+{% placeholder "sections" %}
+<!-- /Sections -->
+
+{% endblock sections %}
