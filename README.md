@@ -1,6 +1,6 @@
 # Gala TV - CMS Site Version. Ready to Production!
 <div align="center">
-  <a href="https://github.com/Vilocer/galatv-cms">
+  <a href="https://github.com/Vilocer/galatv-cms-new-jet">
     <img width="100" height="100" src="https://sun9-47.userapi.com/Y4wLO8JMVQJ-6n41vmyDm8YQXdgJ3DCfYhwH5Q/qLTJrqDApVM.jpg">
   </a>
   <br>
@@ -12,7 +12,7 @@
 - All python packages in requirements.txt
 
 ## Installation - Unix
-- `git clone https://github.com/Vilocer/galatv-cms && cd galatv-cms` - Clone repository.
+- `git clone https://github.com/Vilocer/galatv-cms-new-jet && cd galatv-cms-new-jet` - Clone repository.
 - `python -m venv env && source/env/bin/activate` - Create and activate virtualenv.
 - `pip install -r requirements.txt` - Install need python packages.
 
@@ -33,4 +33,3 @@
 
 - `python src/manage.py migrate` - Run Database migration.
 - `python src/manage.py updaterates` - Make a rates drag and drop in admin-panel.
-"# galatv-cms-new-jet" 
